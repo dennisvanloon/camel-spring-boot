@@ -7,3 +7,17 @@ route:
     from: timer:new-order?delay=1s&period=10s
     to: activemq:queue:HELLO.WORLD
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hawtio,jolokia
+  server:
+    port: 8081
+
+spring:
+  jmx:
+    enabled: true
+
+hawtio:
+  authenticationEnabled: false

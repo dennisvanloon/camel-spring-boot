@@ -19,6 +19,7 @@
 		<camel.version>3.17.0</camel.version>
 		<awaitility.version>4.2.0</awaitility.version>
 		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+		<hawtio-springboot.version>2.15.0</hawtio-springboot.version>
 		<encoding>UTF-8</encoding>
 	</properties>
 
@@ -38,9 +39,19 @@
 			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>io.hawt</groupId>
+			<artifactId>hawtio-springboot</artifactId>
+			<version>${hawtio-springboot.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-management</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
