@@ -20,6 +20,7 @@
 		<awaitility.version>4.2.0</awaitility.version>
 		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
 		<hawtio-springboot.version>2.15.0</hawtio-springboot.version>
+		<testcontainers.version>1.17.3</testcontainers.version>
 		<encoding>UTF-8</encoding>
 	</properties>
 
@@ -75,6 +76,18 @@
 			<groupId>org.awaitility</groupId>
 			<artifactId>awaitility</artifactId>
 			<version>${awaitility.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>localstack</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

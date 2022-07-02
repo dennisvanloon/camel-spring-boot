@@ -5,20 +5,20 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 import static com.dvl.camelsimple.routes.Constants.ENDPOINT_ACTIVE_MQ;
-import static com.dvl.camelsimple.routes.Constants.ENDPOINT_FROM;
+import static com.dvl.camelsimple.routes.Constants.ENDPOINT_TO;
 
 @Component
-public class ProduceMessageOnActiveMQRoute extends RouteBuilder {
+public class ConsumeFromActiveMQRoute extends RouteBuilder {
 
-    private final String routeId = "produce-message-on-amq";
-
-    @PropertyInject(value = ENDPOINT_FROM)
-    private String from;
+    private final String routeId = "consume-message-from-amq";
 
     @PropertyInject(value = ENDPOINT_ACTIVE_MQ)
+    private String from;
+
+    @PropertyInject(value = ENDPOINT_TO)
     private String to;
 
-    @PropertyInject(value = "route.produce-message-on-amq.auto-startup", defaultValue = "false")
+    @PropertyInject(value = "route.consume-message-from-amq.auto-startup", defaultValue = "false")
     private Boolean autoStartup;
 
     @Override
@@ -26,8 +26,7 @@ public class ProduceMessageOnActiveMQRoute extends RouteBuilder {
             from(from)
                 .routeId(routeId)
                 .autoStartup(autoStartup)
-                .setBody(simple("Current time is ${header.firedTime}"))
-                .log("Putting message on the queue: ${body}")
+                .log("Consuming message from the queue: ${body}")
                 .to(to);
     }
 

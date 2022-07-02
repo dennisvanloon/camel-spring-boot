@@ -2,10 +2,10 @@ logging:
   level:
     root: INFO
 
-route:
-  produce-message-on-amq:
+endpoint:
     from: timer:new-order?delay=1s&period=10s
-    to: activemq:queue:HELLO.WORLD
+    activemq: activemq:queue:HELLO.WORLD
+    to: log:log-result
 
 management:
   endpoints:

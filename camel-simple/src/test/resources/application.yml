@@ -2,9 +2,8 @@ logging:
   level:
     root: INFO
 
-route:
-  produce-message-on-amq:
+endpoint:
     from: seda:trigger
-    to: activemq:queue:HELLO.WORLD
-    auto-startup: false
+    activemq: activemq:queue:HELLO.WORLD
+    to: mock:result
 
