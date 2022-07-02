@@ -18,7 +18,6 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
-@SpringBootTest
 @Testcontainers
 public class ActiveMQContainerTest {
 
