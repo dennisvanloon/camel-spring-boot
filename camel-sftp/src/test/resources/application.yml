@@ -1,5 +1,5 @@
 consumer:
-  enabled: true
+  enabled: false
   maxNumberOfFiles: 5
   initialDelay: 10
   period: 30

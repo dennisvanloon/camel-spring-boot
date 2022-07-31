@@ -3,6 +3,7 @@ package com.dvl.camelsftp;
 import com.dvl.camelsftp.sftp.SftpServiceException;
 import com.dvl.camelsftp.sftp.SftpServiceJSchImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -17,21 +18,28 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Slf4j
 public class SftpServiceConsumer {
 
-    private final int maxNumberOfFiles = 5;
-
     private final SftpServiceJSchImpl sftpServiceJSchImpl;
+    private final int maxNumberOfFiles;
 
-    public SftpServiceConsumer(SftpServiceJSchImpl sftpServiceJSchImpl) {
+    public SftpServiceConsumer(@Value("${consumer.enabled}") boolean enabled, @Value("${consumer.maxNumberOfFiles}") int maxNumberOfFiles,
+                               @Value("${consumer.initialDelay}") int initialDelay, @Value("${consumer.period}") int period,
+                               SftpServiceJSchImpl sftpServiceJSchImpl) {
         this.sftpServiceJSchImpl = sftpServiceJSchImpl;
+        this.maxNumberOfFiles = maxNumberOfFiles;
 
-        ScheduledExecutorService executorService = newScheduledThreadPool(1);
-        executorService.scheduleAtFixedRate(() -> {
-            try {
-                doTheWork();
-            } catch (SftpServiceException e) {
-                log.error("", e);
-            }
-        }, 10, 30, SECONDS);
+        if(enabled) {
+            log.info("scheduling to do the work every {} seconds, starting after {} seconds.", period, initialDelay);
+            ScheduledExecutorService executorService = newScheduledThreadPool(1);
+            executorService.scheduleAtFixedRate(() -> {
+                try {
+                    doTheWork();
+                } catch (SftpServiceException e) {
+                    log.error("", e);
+                }
+            }, 10, 30, SECONDS);
+        } else {
+            log.info("Not scheduling to do the work, disabled.");
+        }
     }
 
     private void doTheWork() throws SftpServiceException {

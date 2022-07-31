@@ -21,6 +21,9 @@ public class SftpServiceJSchImpl implements SftpService {
     @Value("${sftp.hostname}")
     private String hostname;
 
+    @Value("${sftp.port}")
+    private int port;
+
     @Value("${sftp.username}")
     private String username;
 
@@ -89,6 +92,7 @@ public class SftpServiceJSchImpl implements SftpService {
         JSch jsch = new JSch();
         try {
             Session session = jsch.getSession(username, hostname);
+            session.setPort(port);
             session.setPassword(password);
             Properties properties = new Properties();
             properties.put("StrictHostKeyChecking", "no");
