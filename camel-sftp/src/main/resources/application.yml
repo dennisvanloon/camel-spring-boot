@@ -1,0 +1,5 @@
+sftp:
+  hostname: localhost
+  username: sftpuser
+  password: password
+  workingdir: upload
