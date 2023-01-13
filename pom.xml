@@ -6,11 +6,13 @@
     <groupId>com.dvl.camel-spring-boot</groupId>
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Camel Spring Boot Examples Parent</name>
+
     <modules>
         <module>camel-simple</module>
         <module>camel-sftp</module>
+        <module>camel-activemq-postgres</module>
     </modules>
-    <packaging>pom</packaging>
-    <name>Camel Spring Boot Examples Parent</name>
 
 </project>

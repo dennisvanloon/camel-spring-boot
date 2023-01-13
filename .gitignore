@@ -5,3 +5,8 @@
 *.iws
 *.iml
 *.ipr
+
+camel-jpa
+camel-elasticsearch-logging
+
+camel-activemq-postgres/notes.txt
