@@ -13,6 +13,7 @@
         <module>camel-simple</module>
         <module>camel-sftp</module>
         <module>camel-activemq-postgres</module>
+        <module>camel-prometheus</module>
     </modules>
 
 </project>

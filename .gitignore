@@ -10,3 +10,4 @@ camel-jpa
 camel-elasticsearch-logging
 
 camel-activemq-postgres/notes.txt
+camel-prometheus/notes.txt
